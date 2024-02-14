@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
          builder: (context, state) {
          return state.when(
              initial: ()=>const SizedBox(),
-             loading:()=> const CircularProgressIndicator.adaptive(),
+             loading:()=> const CircularProgressIndicator(),
              loaded: ()=>,
              Error: (error)=> Center(child: Text(error),)
          );
