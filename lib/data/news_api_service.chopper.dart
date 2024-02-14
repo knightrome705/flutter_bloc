@@ -19,7 +19,8 @@ final class _$NewsApiService extends NewsApiService {
 
   @override
   Future<Response<dynamic>> getnewses() {
-    final Uri $url = Uri.parse('https://newsapi.org/v2/everything');
+    final Uri $url = Uri.parse(
+        '/everything?q=keyword&apiKey=8bfaaf2415b742bebba0d93fc194e6ad');
     final Map<String, String> $headers = {
       'content-Type': 'application/json',
     };
@@ -34,7 +35,8 @@ final class _$NewsApiService extends NewsApiService {
 
   @override
   Future<Response<dynamic>> getnews(int id) {
-    final Uri $url = Uri.parse('https://newsapi.org/v2/everything/${id}');
+    final Uri $url = Uri.parse(
+        '/everything?q=keyword&apiKey=8bfaaf2415b742bebba0d93fc194e6ad/${id}');
     final Request $request = Request(
       'GET',
       $url,
