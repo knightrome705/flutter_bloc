@@ -9,7 +9,7 @@ part 'news_cubit.freezed.dart';
 
 class NewsCubit extends Cubit<NewsState> {
   final NewsApiService newsApiService;
-  NewsCubit() : super(const NewsState.initial());
+  NewsCubit(this.newsApiService) : super(const NewsState.initial());
 
   Future<void> fetch()async{
     emit(const NewsState.loading());

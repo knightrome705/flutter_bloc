@@ -14,6 +14,157 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+NewsModel _$NewsModelFromJson(Map<String, dynamic> json) {
+  return _NewsModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$NewsModel {
+  List<News>? get news => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NewsModelCopyWith<NewsModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NewsModelCopyWith<$Res> {
+  factory $NewsModelCopyWith(NewsModel value, $Res Function(NewsModel) then) =
+      _$NewsModelCopyWithImpl<$Res, NewsModel>;
+  @useResult
+  $Res call({List<News>? news});
+}
+
+/// @nodoc
+class _$NewsModelCopyWithImpl<$Res, $Val extends NewsModel>
+    implements $NewsModelCopyWith<$Res> {
+  _$NewsModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? news = freezed,
+  }) {
+    return _then(_value.copyWith(
+      news: freezed == news
+          ? _value.news
+          : news // ignore: cast_nullable_to_non_nullable
+              as List<News>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$NewsModelImplCopyWith<$Res>
+    implements $NewsModelCopyWith<$Res> {
+  factory _$$NewsModelImplCopyWith(
+          _$NewsModelImpl value, $Res Function(_$NewsModelImpl) then) =
+      __$$NewsModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<News>? news});
+}
+
+/// @nodoc
+class __$$NewsModelImplCopyWithImpl<$Res>
+    extends _$NewsModelCopyWithImpl<$Res, _$NewsModelImpl>
+    implements _$$NewsModelImplCopyWith<$Res> {
+  __$$NewsModelImplCopyWithImpl(
+      _$NewsModelImpl _value, $Res Function(_$NewsModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? news = freezed,
+  }) {
+    return _then(_$NewsModelImpl(
+      freezed == news
+          ? _value._news
+          : news // ignore: cast_nullable_to_non_nullable
+              as List<News>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$NewsModelImpl with DiagnosticableTreeMixin implements _NewsModel {
+  _$NewsModelImpl(final List<News>? news) : _news = news;
+
+  factory _$NewsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NewsModelImplFromJson(json);
+
+  final List<News>? _news;
+  @override
+  List<News>? get news {
+    final value = _news;
+    if (value == null) return null;
+    if (_news is EqualUnmodifiableListView) return _news;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'NewsModel(news: $news)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'NewsModel'))
+      ..add(DiagnosticsProperty('news', news));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewsModelImpl &&
+            const DeepCollectionEquality().equals(other._news, _news));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_news));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewsModelImplCopyWith<_$NewsModelImpl> get copyWith =>
+      __$$NewsModelImplCopyWithImpl<_$NewsModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewsModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _NewsModel implements NewsModel {
+  factory _NewsModel(final List<News>? news) = _$NewsModelImpl;
+
+  factory _NewsModel.fromJson(Map<String, dynamic> json) =
+      _$NewsModelImpl.fromJson;
+
+  @override
+  List<News>? get news;
+  @override
+  @JsonKey(ignore: true)
+  _$$NewsModelImplCopyWith<_$NewsModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 News _$NewsFromJson(Map<String, dynamic> json) {
   return _News.fromJson(json);
 }

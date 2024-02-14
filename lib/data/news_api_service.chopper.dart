@@ -32,16 +32,4 @@ final class _$NewsApiService extends NewsApiService {
     );
     return client.send<dynamic, dynamic>($request);
   }
-
-  @override
-  Future<Response<dynamic>> getnews(int id) {
-    final Uri $url = Uri.parse(
-        '/everything?q=keyword&apiKey=8bfaaf2415b742bebba0d93fc194e6ad/${id}');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<dynamic, dynamic>($request);
-  }
 }

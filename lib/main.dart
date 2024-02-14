@@ -12,16 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => NewsCubit(),
-        ),
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
-      ],
-      child: const MaterialApp(home: Login(),),
-    );
+    return BlocProvider(
+        create: (context) => NewsCubit(newsApiService),
+        child: const MaterialApp(home: Login(),));
   }
 }
