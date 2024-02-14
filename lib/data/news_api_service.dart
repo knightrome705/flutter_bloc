@@ -8,6 +8,11 @@ abstract class NewsApiService extends ChopperService{
   @Get(headers: {'content-Type':'application/json'})
    Future<Response>  getnewses();
 
+  // 1.freezed modelclass
+  // 2.create
+  // 4.list of news
+  // 3.error
+
   static NewsApiService create(){
     Uri url=Uri.parse('https://newsapi.org/v2');
     final ChopperClient client=ChopperClient(baseUrl:url ,

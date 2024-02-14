@@ -5,14 +5,9 @@ import 'package:untitled7/cubit/news_cubit.dart';
 import 'package:untitled7/pages/settings.dart';
 
 import 'cust_widget/cust_news.dart';
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

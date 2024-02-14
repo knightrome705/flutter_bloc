@@ -13,11 +13,11 @@ class NewsCubit extends Cubit<NewsState> {
 
   Future<void> fetch()async{
     emit(const NewsState.loading());
-    final response=await newsApiService.getnewses() ;
+    final response=await newsApiService.getnewses();
     if(response.isSuccessful){
       emit(NewsState.loaded(response.body));
     }else{
-      emit(const NewsState.Error());
+      emit(const NewsState.Error("something wrong"));
     }
 
   }
