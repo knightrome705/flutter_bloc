@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled7/cubit/news_cubit.dart';
 import 'package:untitled7/pages/settings.dart';
 
 import 'cust_widget/cust_news.dart';
@@ -56,21 +58,32 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          Expanded(
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context,index) {
-                return cust_news();
-              }, separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: 10,);
-            }, itemCount: 5,
-            ),
-          )
+          BlocBuilder<NewsCubit,NewsState>(
+         builder: (context, state) {
+         return state.when(
+             initial: ()=>const SizedBox(),
+             loading:()=> const CircularProgressIndicator.adaptive(),
+             loaded: ()=>,
+             Error: (error)=> Center(child: Text(error),)
+         );
+      },
+     )
         ],
       ),
     );
   }
 }
+
+// return Expanded(
+// child: ListView.separated(
+// physics: const BouncingScrollPhysics(),
+// itemBuilder: (context,index) {
+// return  cust_news(heading: "jsfnj",description: "sdmf",);
+// }, separatorBuilder: (BuildContext context, int index) {
+// return const SizedBox(height: 10,);
+// }, itemCount: 5,
+// ),
+// );

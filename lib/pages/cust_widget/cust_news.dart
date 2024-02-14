@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 class cust_news extends StatelessWidget {
-  const cust_news({
+  String description,heading;
+   cust_news({
     super.key,
+    required this.description,required this.heading
   });
 
   @override
@@ -27,19 +29,19 @@ class cust_news extends StatelessWidget {
           ]
 
       ),
-      child:const Padding(
-        padding: EdgeInsets.all(15),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("News Heading",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                Text("today")
+                Text(heading,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                Text(description)
               ],
             ),
-            Icon(Icons.share)],
+            const Icon(Icons.share)],
         ),
       ),
     );

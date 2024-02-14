@@ -19,7 +19,7 @@ class _SavedState extends State<Saved> {
         body: ListView.separated(
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context,index) {
-            return const cust_news();
+            return  cust_news(heading: "sfd",description: "dfjsnf",);
           }, separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(height: 10,);
         }, itemCount: 20,

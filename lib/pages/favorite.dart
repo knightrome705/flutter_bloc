@@ -19,7 +19,7 @@ class _FavState extends State<Fav> {
         body: ListView.separated(
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context,index) {
-            return const cust_news();
+            return  cust_news(description: "Mafjdk",heading: "djsf",);
           }, separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(height: 10,);
         }, itemCount: 20,

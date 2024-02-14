@@ -21,7 +21,7 @@ mixin _$NewsState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function() Error,
+    required TResult Function(String error) Error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$NewsState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function(String error)? Error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$NewsState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function()? Error,
+    TResult Function(String error)? Error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function() Error,
+    required TResult Function(String error) Error,
   }) {
     return initial();
   }
@@ -137,7 +137,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function(String error)? Error,
   }) {
     return initial?.call();
   }
@@ -148,7 +148,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function()? Error,
+    TResult Function(String error)? Error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function() Error,
+    required TResult Function(String error) Error,
   }) {
     return loading();
   }
@@ -251,7 +251,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function(String error)? Error,
   }) {
     return loading?.call();
   }
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function()? Error,
+    TResult Function(String error)? Error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -386,7 +386,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function() Error,
+    required TResult Function(String error) Error,
   }) {
     return loaded(news);
   }
@@ -397,7 +397,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function(String error)? Error,
   }) {
     return loaded?.call(news);
   }
@@ -408,7 +408,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function()? Error,
+    TResult Function(String error)? Error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -469,6 +469,8 @@ abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
 }
 
 /// @nodoc
@@ -478,26 +480,50 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$ErrorImpl(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ErrorImpl implements _Error {
-  const _$ErrorImpl();
+  const _$ErrorImpl(this.error);
+
+  @override
+  final String error;
 
   @override
   String toString() {
-    return 'NewsState.Error()';
+    return 'NewsState.Error(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorImpl &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -505,9 +531,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function() Error,
+    required TResult Function(String error) Error,
   }) {
-    return Error();
+    return Error(error);
   }
 
   @override
@@ -516,9 +542,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function(String error)? Error,
   }) {
-    return Error?.call();
+    return Error?.call(error);
   }
 
   @override
@@ -527,11 +553,11 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function()? Error,
+    TResult Function(String error)? Error,
     required TResult orElse(),
   }) {
     if (Error != null) {
-      return Error();
+      return Error(error);
     }
     return orElse();
   }
@@ -575,5 +601,10 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements NewsState {
-  const factory _Error() = _$ErrorImpl;
+  const factory _Error(final String error) = _$ErrorImpl;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
