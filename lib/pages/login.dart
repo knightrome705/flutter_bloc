@@ -8,13 +8,15 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final TextEditingController name=TextEditingController();
+  final _alphabetValidator = RegExp(r'^[a-zA-Z]+$');
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ()=>FocusScope.of(context).unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: Column(
@@ -50,6 +52,13 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.circular(20)
                       )
                   ),
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return "required";
+                    }else if(!_alphabetValidator.hasMatch(value)){
+                      return "alphabet from a-z & A-z";
+                    }
+                  },
                 ),
               )
             ],

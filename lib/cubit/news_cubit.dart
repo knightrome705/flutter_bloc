@@ -8,18 +8,18 @@ part 'news_state.dart';
 part 'news_cubit.freezed.dart';
 
 class NewsCubit extends Cubit<NewsState> {
+  final NewsApiService newsApiService;
   NewsCubit() : super(const NewsState.initial());
-  fetch();
 
-}
-   final NewsApiService newsApiService;
   Future<void> fetch()async{
-  emit(const NewsState.loading());
-  final response=await newsApiService.getnewses() ;
-  if(response.isSuccessful){
-    emit(NewsState.loaded(response.body));
-  }else{
-    emit(NewsState.Error());
-  }
+    emit(const NewsState.loading());
+    final response=await newsApiService.getnewses() ;
+    if(response.isSuccessful){
+      emit(NewsState.loaded(response.body));
+    }else{
+      emit(const NewsState.Error());
+    }
 
+  }
 }
+
