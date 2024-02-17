@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled7/cubit/news_cubit.dart';
-import 'package:untitled7/pages/login.dart';
+import 'package:untitled7/pages/onboarding.dart';
 
 import 'data/news_api_service.dart';
 
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => NewsCubit(NewsApiService()),
-        child: const MaterialApp(home: Login(),));
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Onboarding(),);
   }
 }
