@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:chopper/chopper.dart';
 
-typedef JsonFactory<T> = T Function(Map<String,dynamic> json);
+typedef JsonFactory<T> = T Function(Map<String, dynamic> json);
 
 class JsonSerializableConverter extends JsonConverter {
   final Map<Type, JsonFactory> factories;
 
   const JsonSerializableConverter(this.factories);
 
-  T _decodeMap<T>(Map<String,dynamic> values) {
+  T _decodeMap<T>(Map<String, dynamic> values) {
     final jsonFactory = factories[T];
     if (jsonFactory == null || jsonFactory is! JsonFactory<T>) {
       throw Exception("JsonFactory not found for type $T");
