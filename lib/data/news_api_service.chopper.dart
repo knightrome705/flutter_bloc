@@ -18,26 +18,21 @@ final class _$NewsApiService extends NewsApiService {
   final Type definitionType = NewsApiService;
 
   @override
-  Future<Response<NewsApi>> getNewses() {
-    final Uri $url = Uri.parse(
-        '/everything?q=keyword&apiKey=8bfaaf2415b742bebba0d93fc194e6ad');
+  Future<Response<Map<String, dynamic>>> getNews(
+    String query,
+    String apiKey,
+  ) {
+    final Uri $url = Uri.parse('/v2/everything');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'q': query,
+      'apiKey': apiKey,
+    };
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
-    return client.send<NewsApi, NewsApi>($request);
-  }
-
-  @override
-  Future<Response<NewsApi>> getNews() {
-    final Uri $url = Uri.parse(
-        '/everything?q=keyword&apiKey=8bfaaf2415b742bebba0d93fc194e6ad');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
-    return client.send<NewsApi, NewsApi>($request);
+    return client.send<Map<String, dynamic>, Map<String, dynamic>>($request);
   }
 }

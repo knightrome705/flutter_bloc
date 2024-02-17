@@ -15,12 +15,12 @@ class NewsCubit extends Cubit<NewsState> {
     try{
       emit(const NewsState.loading());
       print("loaded");
-      final response=await newsApiService.getNews();
+      final response=await newsApiService.getNews('keyword','8bfaaf2415b742bebba0d93fc194e6ad');
       print(response.statusCode);
       print(response);
       print(response.body);
       if(response.isSuccessful){
-        emit(NewsState.loaded(response.body!));
+        // emit(NewsState.loaded(response.body!));
       }else{
         emit(const NewsState.Error());
       }

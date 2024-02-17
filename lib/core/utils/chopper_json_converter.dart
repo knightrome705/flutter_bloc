@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:chopper/chopper.dart';
 
-typedef JsonFactory<T> = T Function(Map<String, dynamic> json);
+typedef JsonFactory<T> = T Function(Map<String,dynamic> json);
 
 class JsonSerializableConverter extends JsonConverter {
   final Map<Type, JsonFactory> factories;
