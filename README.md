@@ -1,4 +1,4 @@
-# untitled7
+This is flutter project used bloc as state management# untitled7
 
 A new Flutter project.
 
