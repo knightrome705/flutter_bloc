@@ -31,9 +31,10 @@ class _SettingsState extends State<Settings> {
             icon: Icon(Icons.person),
             value: "Martin",
           ),
-          cust_settings(name: "Favorite", icon: Icon(Icons.favorite),value: "Science"),
-          cust_settings(name: "city", icon: Icon(Icons.location_city),value: "Kannur"),
-          cust_settings(name: "Theme", icon: Icon(Icons.sunny),value: "light",)
+          cust_settings(name: "Favorite", icon: const Icon(Icons.favorite),value: "Science"),
+          cust_settings(name: "city", icon: const Icon(Icons.location_city),value: "Kannur"),
+          cust_settings(name: "Theme", icon: const Icon(Icons.sunny),value: "light",),
+          cust_settings(name: "Logout", icon: const Icon(Icons.logout),value: "user",)
         ],
       ),
     );
@@ -59,7 +60,7 @@ class cust_settings extends StatelessWidget {
         child: ListTile(
           leading: icon,
           title: Text(name),
-          subtitle: Text(value,style: TextStyle(fontSize: 15),),
+          subtitle: Text(value,style: const TextStyle(fontSize: 15),),
         ),
       ),
     );

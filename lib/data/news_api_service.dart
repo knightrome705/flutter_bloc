@@ -1,6 +1,4 @@
 import 'package:chopper/chopper.dart';
-import '../core/utils/chopper_json_converter.dart';
-import '../model/newsapi.dart';
 
 part 'news_api_service.chopper.dart';
 
@@ -20,7 +18,10 @@ abstract class NewsApiService extends ChopperService {
         _$NewsApiService(),
       ],
       converter: const JsonConverter(),
-      errorConverter: const JsonConverter()
+      errorConverter: const JsonConverter(),
+      interceptors: [
+        HttpLoggingInterceptor()
+      ]
     );
     return _$NewsApiService(client);
   }

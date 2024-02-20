@@ -1,13 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled7/cubit/news_cubit.dart';
+import 'package:untitled7/pages/detailed_view.dart';
 import 'package:untitled7/pages/settings.dart';
 import '../data/news_api_service.dart';
 import 'cust_widget/cust_news.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    getUser();
+    wishes();
+    super.initState();
+  }
+  var name;
+  getUser()async{
+    SharedPreferences user=await SharedPreferences.getInstance();
+     setState(() {
+       name=user.getString("name")?.toUpperCase();
+     });
+     print(name);
+  }
+  var greeting;
+  wishes(){
+    final hour = DateTime.now().hour;
+    if (hour < 12) {
+      greeting = 'Good morning';
+    } else if (hour < 18) {
+      greeting = 'Good afternoon';
+    } else {
+      greeting = 'Good evening';
+    }
+    print(greeting);
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -18,6 +51,7 @@ class Home extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 130),
         child: AppBar(
+          centerTitle: true,
           title: const Text(
             "News.live",
             style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
@@ -37,11 +71,11 @@ class Home extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Column(
+                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("GoodMorning, Martin", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                    Text(
+                    Text("$greeting, $name", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    const Text(
                       "99c",
                       style: TextStyle(fontSize: 15),
                     )
@@ -62,6 +96,7 @@ class Home extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           BlocBuilder<NewsCubit,NewsState>(
+            // bloc: NewsCubit..fetch,
             builder: (context, state) {
               return state.when(
                 initial: () => const SizedBox(),
@@ -70,13 +105,18 @@ class Home extends StatelessWidget {
                   child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return cust_news(
-                        heading: "null",
-                        description: "null"
+                      return InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Details(title:newsList.articles[index].title.toString(),image: newsList.articles[index].urlToImage.toString(),description: newsList.articles[index].description.toString(),author:newsList.articles[index].author.toString() ,content: newsList.articles[index].content.toString(),publishedAt: newsList.articles[index].publishedAt.toString(),url: newsList.articles[index].url.toString(),),));
+                        },
+                        child: cust_news(
+                          heading: newsList.articles[index].title.toString(),
+                          description: newsList.articles[index].author.toString()
+                        ),
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10),
-                    itemCount: 3,
+                    itemCount: newsList.articles.length,
                   ),
                 ), Error: ()=>const Center(child: Text("error"),)
               );

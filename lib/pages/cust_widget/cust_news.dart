@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class cust_news extends StatelessWidget {
   String description,heading;
@@ -37,8 +38,8 @@ class cust_news extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(heading,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                Text(description)
+                SizedBox(height:50,width:300,child: Text(heading,overflow:TextOverflow.ellipsis,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                SizedBox(height:20,width:300,child: Text(description,overflow: TextOverflow.ellipsis,))
               ],
             ),
             const Icon(Icons.share)],
