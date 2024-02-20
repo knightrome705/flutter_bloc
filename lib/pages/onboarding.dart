@@ -27,7 +27,7 @@ class _OnboardingState extends State<Onboarding> {
               controller: controller,
               children: const [
                 Login(),
-                Category(),
+                Categories(),
                 UserLocation()
               ],
             ),

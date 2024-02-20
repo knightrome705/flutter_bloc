@@ -24,9 +24,9 @@ class _HomeState extends State<Home> {
   var name;
   getUser()async{
     SharedPreferences user=await SharedPreferences.getInstance();
-     setState(() {
-       name=user.getString("name")?.toUpperCase();
-     });
+       setState(() {
+         name=user.getString("name")?.toUpperCase();
+       });
      print(name);
   }
   var greeting;
@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
                     icon: const Icon(Icons.settings),
                     color: Colors.white,
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Settings()));
+                      Navigator.pushNamed(context, "/settings");
                     },
                   ),
                 )

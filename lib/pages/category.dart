@@ -1,19 +1,23 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled7/pages/userlocarion.dart';
 import 'package:untitled7/utils/common_toat.dart';
 
-class Category extends StatefulWidget {
-  const Category({super.key});
+class Categories extends StatefulWidget {
+  const Categories({super.key});
 
   @override
-  State<Category> createState() => _CategoryState();
+  State<Categories> createState() => _CategoriesState();
 }
 
-class _CategoryState extends State<Category> {
+class _CategoriesState extends State<Categories> {
   List<bool> isSelected = List.generate(7, (_) => false);
   List<String> items=[];
+  @override
+  void initState() {
+    items.clear();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +50,7 @@ class _CategoryState extends State<Category> {
                       });
                     },
                   ),
-                  const SizedBox(width: 40,),
+                  const SizedBox(width: 50,),
                   ChoiceChip(
                     label: const Text("Entertainment"),
                     selected: isSelected[1],
@@ -58,7 +62,7 @@ class _CategoryState extends State<Category> {
                       });
                     },
                   ),
-                  const SizedBox(width: 20,),
+                  const SizedBox(width: 30,),
                   ChoiceChip(
                     label: const Text("General"),
                     selected: isSelected[2],
@@ -70,7 +74,7 @@ class _CategoryState extends State<Category> {
                       });
                     },
                   ),
-                  const SizedBox(width: 40,),
+                  const SizedBox(width: 50,),
                   ChoiceChip(
                     label: const Text("Health"),
                     selected: isSelected[3],
@@ -82,7 +86,7 @@ class _CategoryState extends State<Category> {
                       });
                     },
                   ),
-                  const SizedBox(width: 30,),
+                  const SizedBox(width: 40,),
                   ChoiceChip(
                     label: const Text("Science"),
                     selected: isSelected[4],
@@ -94,7 +98,7 @@ class _CategoryState extends State<Category> {
                       });
                     },
                   ),
-                  const SizedBox(width: 40,),
+                  const SizedBox(width: 50,),
                   ChoiceChip(
                     label: const Text("Sports"),
                     selected: isSelected[5],
@@ -106,7 +110,7 @@ class _CategoryState extends State<Category> {
                       });
                     },
                   ),
-                  const SizedBox(width: 20,),
+                  const SizedBox(width: 30,),
                   ChoiceChip(
                     label: const Text("Technology"),
                     selected: isSelected[6],
@@ -129,10 +133,9 @@ class _CategoryState extends State<Category> {
                     ElevatedButton(onPressed: ()async{
                       SharedPreferences shared=await SharedPreferences.getInstance();
                       if(items.length>2||items.length==2){
-                        // await shared.setStringList("category", items);
-                        // var items=shared.getStringList("category");
+                        shared.setStringList("item", items);
                         commonToast("sucess");
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const UserLocation(),));
+                        Navigator.pushReplacementNamed(context, '/location');
                       }else{
                       commonToast("minimum 2 required");
                       }

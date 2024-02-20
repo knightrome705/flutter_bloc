@@ -32,10 +32,13 @@ class _LoginState extends State<Login> {
               children: [
                 Container(
                   height: 150,
-                  width: 100,
+                  width: 200,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.green
+                      color: Colors.green,
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("assests/news.png"))
                   ),
                 ),
                 const Text("The News App",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
@@ -79,8 +82,7 @@ class _LoginState extends State<Login> {
                   SharedPreferences user= await SharedPreferences.getInstance();
                   if(_formKey.currentState!.validate()){
                     user.setString("name", name.text);
-                    print(user.getString("name"));
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Category(),));
+                    Navigator.pushReplacementNamed(context,'/category');
                     return commonToast("sucess");
                   }else{
                     return commonToast("failed");

@@ -1,3 +1,4 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 
 import 'botton_nav.dart';
@@ -36,12 +37,19 @@ class _UserLocationState extends State<UserLocation> {
                 const SizedBox(
                   height: 30,
                 ),
-                Container(
-                  height: 150,
-                  width: 150,
-                  decoration: const BoxDecoration(
-                    color: Colors.orange,
-                    shape: BoxShape.circle,
+                AvatarGlow(
+                  glowColor: Colors.grey,
+                  curve: Curves.fastEaseInToSlowEaseOut,
+                  child: Container(
+                    height: 150,
+                    width: 150,
+                    decoration: const BoxDecoration(
+                      color: Colors.orange,
+                       shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage("assests/location.png"))
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -49,8 +57,10 @@ class _UserLocationState extends State<UserLocation> {
                 ),
                 TextField(
                   decoration: InputDecoration(
+                    labelText: "Enter location",
+                      suffixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)
+                          borderRadius: BorderRadius.circular(20),
                       )
                   ),
                 )
@@ -63,7 +73,7 @@ class _UserLocationState extends State<UserLocation> {
         backgroundColor: Colors.blue,
         child: const Icon(Icons.navigate_next_outlined,color: Colors.white,),
         onPressed: (){
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Bottom_Nav(),));
+          Navigator.pushReplacementNamed(context, '/bottom');
         },
       ),
     );

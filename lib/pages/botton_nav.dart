@@ -13,7 +13,7 @@ class Bottom_Nav extends StatefulWidget {
 
 class _Bottom_NavState extends State<Bottom_Nav> {
   int index=0;
-  List pages=[Home(),Fav(),Saved()];
+  List pages=[const Home(),const Favorite(),const Saved()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
