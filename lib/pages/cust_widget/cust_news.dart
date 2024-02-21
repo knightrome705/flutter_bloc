@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled7/utils/app_colors.dart';
+
+import '../../utils/app_style.dart';
 class cust_news extends StatelessWidget {
   String description,heading;
    cust_news({
@@ -13,17 +15,17 @@ class cust_news extends StatelessWidget {
       height: 100,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
+          color: white,
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.shade500,
+                color: shadow,
                 offset: const Offset(4.0,4.0),
                 blurRadius: 15,
                 spreadRadius: 1
             ),
-            const BoxShadow(
-                color: Colors.white,
-                offset: Offset(-4.0,-4.0),
+             BoxShadow(
+                color: white,
+                offset: const Offset(-4.0,-4.0),
                 blurRadius: 15,
                 spreadRadius: 1
             )
@@ -38,7 +40,7 @@ class cust_news extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height:50,width:300,child: Text(heading,overflow:TextOverflow.ellipsis,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                SizedBox(height:50,width:300,child: Text(heading,overflow:TextOverflow.ellipsis,style: Style.newsheading,)),
                 SizedBox(height:20,width:300,child: Text(description,overflow: TextOverflow.ellipsis,))
               ],
             ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:untitled7/pages/category.dart';
+import 'package:untitled7/utils/app_colors.dart';
+import 'package:untitled7/utils/app_style.dart';
 
 import '../utils/common_toat.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -11,21 +13,21 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController name=TextEditingController();
+  final TextEditingController name = TextEditingController();
   final _alphabetValidator = RegExp(r'^[a-zA-Z]+$');
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: Form(
-            key:_formKey ,
+            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,18 +35,23 @@ class _LoginState extends State<Login> {
                 Container(
                   height: 150,
                   width: 200,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.green,
-                    image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage("assests/news.png"))
-                  ),
+                      color: green,
+                      image: const DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage("assests/news.png"))),
                 ),
-                const Text("The News App",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+                Text("The News App", style: Style.heading1),
                 Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: const Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",style: TextStyle(fontStyle: FontStyle.italic),)),
+                    child: Text(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
+                          " do eiusmod tempor incididunt ut labore et dolore magna a"
+                          "liqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labori"
+                          "s nisi ut aliquip ex ea commodo consequat.",
+                      style: Style.subtitle2,
+                    )),
                 const SizedBox(
                   height: 20,
                 ),
@@ -53,22 +60,20 @@ class _LoginState extends State<Login> {
                   child: TextFormField(
                     controller: name,
                     decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.person),
-                        suffixIcon: const Icon(Icons.navigate_next),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)
-                        ),
+                      prefixIcon: const Icon(Icons.person),
+                      suffixIcon: const Icon(Icons.navigate_next),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    validator: (value){
-                      if(value!.isEmpty){
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return "required";
-                      }else if(!_alphabetValidator.hasMatch(value)){
+                      } else if (!_alphabetValidator.hasMatch(value)) {
                         return "alphabet from a-z & A-z";
                       }
                       return null;
@@ -78,19 +83,26 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 30,
                 ),
-                ElevatedButton(onPressed: ()async{
-                  SharedPreferences user= await SharedPreferences.getInstance();
-                  if(_formKey.currentState!.validate()){
-                    user.setString("name", name.text);
-                    Navigator.pushReplacementNamed(context,'/category');
-                    return commonToast("sucess");
-                  }else{
-                    return commonToast("failed");
-                  }
-                },style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  minimumSize: const Size(200, 50)
-                ), child:const Text("submit",style: TextStyle(color: Colors.white),),)
+                ElevatedButton(
+                  onPressed: () async {
+                    SharedPreferences user =
+                        await SharedPreferences.getInstance();
+                    if (_formKey.currentState!.validate()) {
+                      user.setString("name", name.text);
+                      Navigator.pushReplacementNamed(context, '/category');
+                      return commonToast("sucess");
+                    } else {
+                      return commonToast("failed");
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: secondary,
+                      minimumSize: const Size(200, 50)),
+                  child: Text(
+                    "submit",
+                    style: TextStyle(color: white),
+                  ),
+                )
               ],
             ),
           ),

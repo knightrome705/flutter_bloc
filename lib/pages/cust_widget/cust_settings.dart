@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled7/utils/app_style.dart';
 class cust_settings extends StatelessWidget {
   final String name;
   final String value;
@@ -24,7 +25,7 @@ class cust_settings extends StatelessWidget {
           title: Text(name),
           subtitle: Text(
             value,
-            style: const TextStyle(fontSize: 15),
+            style: Style.settings,
           ),
         ),
       ),

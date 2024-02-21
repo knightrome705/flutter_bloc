@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled7/utils/app_colors.dart';
+import 'package:untitled7/utils/app_style.dart';
 
 import 'cust_widget/cust_news.dart';
 class Favorite extends StatefulWidget {
@@ -13,8 +15,8 @@ class _FavoriteState extends State<Favorite> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: const Text("Favoriteorite",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+          backgroundColor: primary,
+          title:  Text("Favorite",style:Style.heading1),
         ),
         body: ListView.separated(
           physics: const BouncingScrollPhysics(),

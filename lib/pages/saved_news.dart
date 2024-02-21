@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled7/utils/app_colors.dart';
+import 'package:untitled7/utils/app_style.dart';
 
 import 'cust_widget/cust_news.dart';
 class Saved extends StatefulWidget {
@@ -13,8 +15,8 @@ class _SavedState extends State<Saved> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: const Text("Saved",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+          backgroundColor: primary,
+          title:  Text("Saved",style: Style.heading1),
         ),
         body: ListView.separated(
           physics: const BouncingScrollPhysics(),

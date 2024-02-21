@@ -1,6 +1,8 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled7/utils/app_colors.dart';
 
+import '../utils/app_style.dart';
 import 'botton_nav.dart';
 
 class UserLocation extends StatefulWidget {
@@ -33,20 +35,24 @@ class _UserLocationState extends State<UserLocation> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate"),
+                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
+                     " do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut "
+                     "enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi "
+                     "ut aliquip ex ea commodo"
+                     " consequat. Duis aute irure dolor in reprehenderit in voluptate",style: Style.subtitle2,),
                 const SizedBox(
                   height: 30,
                 ),
                 AvatarGlow(
-                  glowColor: Colors.grey,
+                  glowColor: shadow,
                   curve: Curves.fastEaseInToSlowEaseOut,
                   child: Container(
                     height: 150,
                     width: 150,
-                    decoration: const BoxDecoration(
-                      color: Colors.orange,
+                    decoration:  BoxDecoration(
+                      color: primary,
                        shape: BoxShape.circle,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage("assests/location.png"))
                     ),

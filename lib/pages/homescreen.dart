@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled7/cubit/news_cubit.dart';
 import 'package:untitled7/pages/detailed_view.dart';
-import 'package:untitled7/pages/settings.dart';
+import 'package:untitled7/utils/app_style.dart';
 import '../data/news_api_service.dart';
+import '../utils/app_colors.dart';
 import 'cust_widget/cust_news.dart';
 
 class Home extends StatefulWidget {
@@ -52,14 +53,14 @@ class _HomeState extends State<Home> {
         preferredSize: const Size(double.infinity, 130),
         child: AppBar(
           centerTitle: true,
-          title: const Text(
+          title:  Text(
             "News.live",
-            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+            style:Style.heading1,
           ),
           flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(bottomRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
-              gradient: LinearGradient(colors: [Colors.red, Colors.orange]),
+            decoration:  BoxDecoration(
+              borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
+              gradient: LinearGradient(colors: [secondary, primary]),
             ),
           ),
         ),
@@ -74,7 +75,7 @@ class _HomeState extends State<Home> {
                  Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("$greeting, $name", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text("$greeting, $name", style: Style.subtitle1.copyWith(fontSize: 20)),
                     const Text(
                       "99c",
                       style: TextStyle(fontSize: 15),
@@ -85,7 +86,7 @@ class _HomeState extends State<Home> {
                   decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(5)),
                   child: IconButton(
                     icon: const Icon(Icons.settings),
-                    color: Colors.white,
+                    color: white,
                     onPressed: () {
                       Navigator.pushNamed(context, "/settings");
                     },

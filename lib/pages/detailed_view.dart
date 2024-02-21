@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:untitled7/utils/app_style.dart';
 class Details extends StatelessWidget {
   String title,description,image,author,url,content,publishedAt;
    Details({super.key,required this.title,required this.description,required this.image,required this.author,required this.url,required this.content,required this.publishedAt});
@@ -8,14 +9,14 @@ class Details extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Description",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        title:  Text("Description",style: Style.heading1),
         backgroundColor: Colors.orange,
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         physics: const BouncingScrollPhysics(),
         children: [
-          Text(title,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+          Text(title,style: Style.heading2,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -30,7 +31,7 @@ class Details extends StatelessWidget {
           ),
           Row(
             children: [
-              Text(author,style: const TextStyle(fontSize: 15,fontStyle: FontStyle.italic),),
+              Text(author,style: Style.description,),
             ],
           ),
           const SizedBox(
@@ -42,7 +43,7 @@ class Details extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(description,style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+          Text(description,style: Style.subtitle1,),
           const SizedBox(
             height: 10,
           ),

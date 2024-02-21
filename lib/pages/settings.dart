@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:untitled7/utils/app_colors.dart';
 
 
 import 'cust_widget/cust_settings.dart';
@@ -31,7 +32,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: primary,
         title: const Text(
           "Settings",
           style: TextStyle(color: Colors.white),
@@ -43,9 +44,9 @@ class _SettingsState extends State<Settings> {
             currentAccountPicture: const CircleAvatar(backgroundImage: AssetImage("assests/news.png"),),
             accountName: Text(name??"null"),
             accountEmail: const Text("newsapp.org.com"),
-            decoration: const BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+                color: primary,
+                borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20))),
           ),

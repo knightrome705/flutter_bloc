@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:untitled7/pages/userlocarion.dart';
+import 'package:untitled7/utils/app_style.dart';
 import 'package:untitled7/utils/common_toat.dart';
 
 class Categories extends StatefulWidget {
@@ -27,12 +27,13 @@ class _CategoriesState extends State<Categories> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              const Text(
+               Text(
                 "Choose your fav",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: Style.heading3,
               ),
-              const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+               Text(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna "
+                      "aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",style: Style.subtitle2,),
               const SizedBox(
                 height: 30,
               ),
