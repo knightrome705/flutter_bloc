@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled7/utils/app_style.dart';
 import 'package:untitled7/utils/common_toat.dart';
 
+import '../utils/app_colors.dart';
+
 class Categories extends StatefulWidget {
   const Categories({super.key});
 
@@ -127,9 +129,9 @@ class _CategoriesState extends State<Categories> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 20),
+                padding: const EdgeInsets.only(right: 20,top: 10),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(onPressed: ()async{
                       SharedPreferences shared=await SharedPreferences.getInstance();
@@ -141,7 +143,9 @@ class _CategoriesState extends State<Categories> {
                       commonToast("minimum 2 required");
                       }
 
-                    }, child: const Text("submit")),
+                    },style: ElevatedButton.styleFrom(
+                        backgroundColor: secondary,
+                        minimumSize: const Size(200, 50)), child: Text("submit",style: TextStyle(color: white),),),
                   ],
                 ),
               )

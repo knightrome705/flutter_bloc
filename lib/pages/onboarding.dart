@@ -37,8 +37,8 @@ class _OnboardingState extends State<Onboarding> {
                 padding: const EdgeInsets.only(bottom: 20.0),
                 child: SmoothPageIndicator(
                     controller: controller,
-                    count: 2, // number of pages
-                    effect: const ExpandingDotsEffect()
+                    count: 3,
+                    effect: const JumpingDotEffect()
                 ),
               ),
             ),

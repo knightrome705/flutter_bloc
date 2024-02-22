@@ -20,6 +20,8 @@ class _Bottom_NavState extends State<Bottom_Nav> {
       body: pages[index],
 
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.red,
+        selectedFontSize: 15,
         currentIndex: index,
         onTap: (value){
           setState(() {

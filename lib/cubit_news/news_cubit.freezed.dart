@@ -21,7 +21,7 @@ mixin _$NewsState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(NewsApi news) loaded,
-    required TResult Function() Error,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$NewsState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(NewsApi news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$NewsState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(NewsApi news)? loaded,
-    TResult Function()? Error,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ mixin _$NewsState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) Error,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +54,7 @@ mixin _$NewsState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? Error,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +62,7 @@ mixin _$NewsState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? Error,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(NewsApi news) loaded,
-    required TResult Function() Error,
+    required TResult Function() error,
   }) {
     return initial();
   }
@@ -137,7 +137,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(NewsApi news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function()? error,
   }) {
     return initial?.call();
   }
@@ -148,7 +148,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(NewsApi news)? loaded,
-    TResult Function()? Error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -163,7 +163,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) Error,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -174,7 +174,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? Error,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -185,7 +185,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? Error,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(NewsApi news) loaded,
-    required TResult Function() Error,
+    required TResult Function() error,
   }) {
     return loading();
   }
@@ -251,7 +251,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(NewsApi news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(NewsApi news)? loaded,
-    TResult Function()? Error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -277,7 +277,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) Error,
+    required TResult Function(_Error value) error,
   }) {
     return loading(this);
   }
@@ -288,7 +288,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? Error,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -299,7 +299,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? Error,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -390,7 +390,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(NewsApi news) loaded,
-    required TResult Function() Error,
+    required TResult Function() error,
   }) {
     return loaded(news);
   }
@@ -401,7 +401,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(NewsApi news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function()? error,
   }) {
     return loaded?.call(news);
   }
@@ -412,7 +412,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(NewsApi news)? loaded,
-    TResult Function()? Error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -427,7 +427,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) Error,
+    required TResult Function(_Error value) error,
   }) {
     return loaded(this);
   }
@@ -438,7 +438,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? Error,
+    TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -449,7 +449,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? Error,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -491,7 +491,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'NewsState.Error()';
+    return 'NewsState.error()';
   }
 
   @override
@@ -509,9 +509,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(NewsApi news) loaded,
-    required TResult Function() Error,
+    required TResult Function() error,
   }) {
-    return Error();
+    return error();
   }
 
   @override
@@ -520,9 +520,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(NewsApi news)? loaded,
-    TResult? Function()? Error,
+    TResult? Function()? error,
   }) {
-    return Error?.call();
+    return error?.call();
   }
 
   @override
@@ -531,11 +531,11 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(NewsApi news)? loaded,
-    TResult Function()? Error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (Error != null) {
-      return Error();
+    if (error != null) {
+      return error();
     }
     return orElse();
   }
@@ -546,9 +546,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) Error,
+    required TResult Function(_Error value) error,
   }) {
-    return Error(this);
+    return error(this);
   }
 
   @override
@@ -557,9 +557,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? Error,
+    TResult? Function(_Error value)? error,
   }) {
-    return Error?.call(this);
+    return error?.call(this);
   }
 
   @override
@@ -568,11 +568,11 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? Error,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (Error != null) {
-      return Error(this);
+    if (error != null) {
+      return error(this);
     }
     return orElse();
   }

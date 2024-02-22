@@ -15,19 +15,16 @@ class cust_news extends StatelessWidget {
       height: 100,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: white,
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
                 color: shadow,
                 offset: const Offset(4.0,4.0),
-                blurRadius: 15,
-                spreadRadius: 1
+
             ),
              BoxShadow(
                 color: white,
                 offset: const Offset(-4.0,-4.0),
-                blurRadius: 15,
-                spreadRadius: 1
             )
           ]
 
@@ -44,7 +41,7 @@ class cust_news extends StatelessWidget {
                 SizedBox(height:20,width:300,child: Text(description,overflow: TextOverflow.ellipsis,))
               ],
             ),
-            const Icon(Icons.share)],
+            ],
         ),
       ),
     );

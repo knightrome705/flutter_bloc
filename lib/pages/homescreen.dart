@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:untitled7/cubit/news_cubit.dart';
 import 'package:untitled7/pages/detailed_view.dart';
 import 'package:untitled7/utils/app_style.dart';
-import '../data/news_api_service.dart';
+import '../cubit_news/news_cubit.dart';
+import '../news_data/news_api_service.dart';
 import '../utils/app_colors.dart';
 import 'cust_widget/cust_news.dart';
 
@@ -49,19 +49,18 @@ class _HomeState extends State<Home> {
     newsApiService:NewsApiService.create()
   )..fetch(),
   child: Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size(double.infinity, 130),
-        child: AppBar(
-          centerTitle: true,
-          title:  Text(
-            "News.live",
-            style:Style.heading1,
-          ),
-          flexibleSpace: Container(
-            decoration:  BoxDecoration(
-              borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
-              gradient: LinearGradient(colors: [secondary, primary]),
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        toolbarHeight: 100,
+        centerTitle: true,
+        title:  Text(
+          "News.live",
+          style:Style.heading1,
+        ),
+        flexibleSpace: Container(
+          decoration:  BoxDecoration(
+            borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
+            gradient: LinearGradient(colors: [secondary, primary]),
           ),
         ),
       ),
@@ -119,7 +118,7 @@ class _HomeState extends State<Home> {
                     separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10),
                     itemCount: newsList.articles.length,
                   ),
-                ), Error: ()=>const Center(child: Text("error"),)
+                ), error: ()=>const Center(child: Text("error"),)
               );
             },
           )

@@ -18,6 +18,22 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    removeUser();
+    super.initState();
+  }
+  void removeUser()async{
+    SharedPreferences user =
+        await SharedPreferences.getInstance();
+    user.clear();
+  }
+void getUser()async{
+  SharedPreferences user =
+      await SharedPreferences.getInstance();
+  user.setString("name", name.text);
+}
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -69,6 +85,9 @@ class _LoginState extends State<Login> {
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -85,10 +104,9 @@ class _LoginState extends State<Login> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    SharedPreferences user =
-                        await SharedPreferences.getInstance();
+
                     if (_formKey.currentState!.validate()) {
-                      user.setString("name", name.text);
+                      getUser();
                       Navigator.pushReplacementNamed(context, '/category');
                       return commonToast("sucess");
                     } else {

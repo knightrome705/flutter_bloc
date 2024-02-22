@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:untitled7/utils/app_style.dart';
+import 'package:untitled7/utils/common_toat.dart';
 class Details extends StatelessWidget {
   String title,description,image,author,url,content,publishedAt;
    Details({super.key,required this.title,required this.description,required this.image,required this.author,required this.url,required this.content,required this.publishedAt});
@@ -22,7 +23,12 @@ class Details extends StatelessWidget {
             children: [
               Text(publishedAt),
               IconButton(onPressed: ()async{
-                  // await Share.share(url);
+                  try{
+                    // await Share.share("martin",subject: 'any one');
+                  }catch(e){
+                    commonToast(e.toString());
+                    print(e.toString());
+                  }
               },icon: const Icon(Icons.share),)
             ],
           ),
