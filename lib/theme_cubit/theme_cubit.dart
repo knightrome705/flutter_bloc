@@ -7,8 +7,16 @@ part 'theme_cubit.freezed.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super( ThemeState.initial(themeData: ThemeData.light()));
+  int flag=0;
   void changeTheme(){
-    emit(ThemeState.finaltheme(themeData: ThemeData.dark()));
+    if(flag==0){
+      flag=1;
+      emit(ThemeState.finaltheme(themeData: ThemeData.dark()));
+    }else if(flag==1){
+      flag=0;
+      emit(ThemeState.initial(themeData: ThemeData.light()));
+    }
+
   }
   
 }

@@ -4,9 +4,11 @@ import 'package:untitled7/utils/app_colors.dart';
 import '../../utils/app_style.dart';
 class cust_news extends StatelessWidget {
   String description,heading;
+  Widget widget;
    cust_news({
     super.key,
-    required this.description,required this.heading
+    required this.description,required this.heading,
+     required this.widget
   });
 
   @override
@@ -41,6 +43,7 @@ class cust_news extends StatelessWidget {
                 SizedBox(height:20,width:300,child: Text(description,overflow: TextOverflow.ellipsis,))
               ],
             ),
+            widget
             ],
         ),
       ),

@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled7/pages/botton_nav.dart';
 import 'package:untitled7/pages/category.dart';
 import 'package:untitled7/pages/favorite.dart';
 import 'package:untitled7/pages/homescreen.dart';
 import 'package:untitled7/pages/login.dart';
+import 'package:untitled7/isar/news_database.dart';
 import 'package:untitled7/pages/onboarding.dart';
 import 'package:untitled7/pages/saved_news.dart';
 import 'package:untitled7/pages/settings.dart';
 import 'package:untitled7/pages/userlocarion.dart';
 import 'package:untitled7/theme_cubit/theme_cubit.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await NewsDatabase.initialize();
+  runApp(ChangeNotifierProvider(create: (context) => NewsDatabase(),child: const MyApp(),));
 }
 
 class MyApp extends StatelessWidget {

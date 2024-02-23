@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
                     icon: const Icon(Icons.settings),
                     color: white,
                     onPressed: () {
-                      Navigator.pushNamed(context, "/settings");
+                      Navigator.pushNamed(context,"/settings");
                     },
                   ),
                 )
@@ -111,7 +111,8 @@ class _HomeState extends State<Home> {
                         },
                         child: cust_news(
                           heading: newsList.articles[index].title.toString(),
-                          description: newsList.articles[index].author.toString()
+                          description: newsList.articles[index].author.toString(),
+                          widget: SizedBox(),
                         ),
                       );
                     },

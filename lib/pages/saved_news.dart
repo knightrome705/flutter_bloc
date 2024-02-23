@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled7/isar/news.dart';
+import 'package:untitled7/isar/news_database.dart';
 import 'package:untitled7/utils/app_colors.dart';
 import 'package:untitled7/utils/app_style.dart';
 
@@ -11,8 +14,17 @@ class Saved extends StatefulWidget {
 }
 
 class _SavedState extends State<Saved> {
+  void readNews(){
+    setState(() {
+      context.watch<NewsDatabase>().fetchNews();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final newsDatabase=context.read<NewsDatabase>();
+    List<News> currentNews=newsDatabase.currentNews;
+    print(currentNews);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: primary,
@@ -21,10 +33,11 @@ class _SavedState extends State<Saved> {
         body: ListView.separated(
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context,index) {
-            return  cust_news(heading: "sfd",description: "dfjsnf",);
+            final news=currentNews[index];
+            return  cust_news(heading: news.title,description: news.title,widget: const Icon(Icons.remove,color: Colors.red,),);
           }, separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(height: 10,);
-        }, itemCount: 20,
+        }, itemCount: currentNews.length,
         )
     );
   }

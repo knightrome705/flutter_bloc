@@ -17,6 +17,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   var name, favorite;
+  bool theme=true;
 
   @override
   void initState() {
@@ -83,9 +84,13 @@ class _SettingsState extends State<Settings> {
             ),
             cust_settings(
               name: "Theme",
-              icon: const Icon(Icons.sunny),
-              value: "light",
+              icon: theme?const Icon(Icons.sunny):const Icon(Icons.sunny_snowing),
+              value: theme?"light":"dark",
               onTap: () {
+                setState(() {
+                  theme=!theme;
+                  print(theme);
+                });
                 context.read<ThemeCubit>().changeTheme();
                 print("Theme setting tapped!");
               },

@@ -20,7 +20,7 @@ class UserLocation extends StatelessWidget {
 }
 
 class _UserLocationWidget extends StatelessWidget {
-  final TextEditingController _locationController = TextEditingController();
+ // final TextEditingController _locationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +66,7 @@ class _UserLocationWidget extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    var data=context.read<LocationCubit>().getLocation();
-                    print(data);
+                    context.read<LocationCubit>().getLocation();
                   },
                   child: AvatarGlow(
                     glowColor: shadow,
@@ -90,7 +89,10 @@ class _UserLocationWidget extends StatelessWidget {
                   height: 80,
                 ),
                 TextField(
-                  controller: _locationController,
+                  // controller: _locationController,
+                  onChanged: (value){
+
+                  },
                   decoration: InputDecoration(
                     labelText: "Enter location",
                     suffixIcon: const Icon(Icons.search),

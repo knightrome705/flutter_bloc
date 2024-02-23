@@ -12,16 +12,16 @@ class LocationCubit extends Cubit<LocationState> {
  final LocationApiService locationApiService;
   LocationCubit({required this.locationApiService}) : super(const LocationState.initial(location: "null"));
   Future<void> getLocation()async{
-    var data;
+    var location;
     try{
      final response=await locationApiService.getLocation();
       print(response.body);
      if(response.body!=null){
-       data= LocationApi.fromJson(response.body!);
+       location= LocationApi.fromJson(response.body!);
      }
-     print(data);
+     print(location);
      if(response.isSuccessful){
-       emit(LocationState.getlocation(location: data));
+       emit(LocationState.getlocation(location: location));
      }
     }catch(e){
       commonToast(e.toString());
