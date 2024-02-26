@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled7/pages/botton_nav.dart';
-import 'package:untitled7/pages/category.dart';
-import 'package:untitled7/pages/favorite.dart';
-import 'package:untitled7/pages/homescreen.dart';
-import 'package:untitled7/pages/login.dart';
-import 'package:untitled7/isar/news_database.dart';
-import 'package:untitled7/pages/onboarding.dart';
-import 'package:untitled7/pages/saved_news.dart';
-import 'package:untitled7/pages/settings.dart';
-import 'package:untitled7/pages/userlocarion.dart';
-import 'package:untitled7/theme_cubit/theme_cubit.dart';
+import 'package:untitled7/routes/name_routes.dart';
+import 'package:untitled7/routes/routes.dart';
+import 'controller/theme_cubit/theme_cubit.dart';
+import 'isar_database/news_database.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,18 +25,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: state.themeData,
             debugShowCheckedModeBanner: false,
-            routes: {
-              '/': (context) => const Login(),
-              '/onboarding': (context) => const Onboarding(),
-              '/category': (context) => const Categories(),
-              '/location': (context) => const UserLocation(),
-              '/home': (context) => const Home(),
-              '/favorite': (context) => const Favorite(),
-              '/saved': (context) => const Saved(),
-              '/settings': (context) => const Settings(),
-              '/bottom': (context) => const Bottom_Nav(),
-            },
-            initialRoute: '/onboarding',
+            initialRoute: RouteName.login,
+            onGenerateRoute: Routes.generateRoute,
           );
         },
       ),

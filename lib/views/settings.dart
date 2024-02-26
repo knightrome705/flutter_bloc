@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:untitled7/theme_cubit/theme_cubit.dart';
+import 'package:untitled7/routes/name_routes.dart';
 import 'package:untitled7/utils/app_colors.dart';
-
-
+import 'package:untitled7/utils/common_toat.dart';
+import '../controller/theme_cubit/theme_cubit.dart';
 import 'cust_widget/cust_settings.dart';
 
 class Settings extends StatefulWidget {
@@ -15,21 +15,57 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  @override
   var name, favorite;
-  bool theme=true;
+  bool theme = true;
+  late final TextEditingController usercontroller;
 
   @override
   void initState() {
+    usercontroller = TextEditingController();
     getData();
     super.initState();
   }
 
-  void getData() async {
-    SharedPreferences shared = await SharedPreferences.getInstance();
+  void updateUser() async {
+    SharedPreferences user = await SharedPreferences.getInstance();
+    user.setString('name', usercontroller.text);
     setState(() {
-      name = shared.getString("name")!.toUpperCase();
-      favorite = shared.getStringList("item");
+      name = usercontroller.text.toUpperCase();
+    });
+    commonToast("updated");
+    Navigator.pop(context);
+  }
+
+  void newUser() {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text("Enter name"),
+              content: TextField(
+                controller: usercontroller,
+                decoration: const InputDecoration(
+                    labelText: "Enter name", border: OutlineInputBorder()),
+              ),
+              actions: [
+                TextButton(
+                    onPressed: () async {
+                      updateUser();
+                    },
+                    child: const Text("update")),
+                TextButton(
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("close"))
+              ],
+            ));
+  }
+
+  void getData() async {
+    SharedPreferences user = await SharedPreferences.getInstance();
+    setState(() {
+      name = user.getString("name")!.toUpperCase();
+      favorite = user.getStringList("item");
     });
   }
 
@@ -38,6 +74,7 @@ class _SettingsState extends State<Settings> {
     return BlocProvider(
       create: (context) => ThemeCubit(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: primary,
           title: const Text(
@@ -49,7 +86,8 @@ class _SettingsState extends State<Settings> {
           children: [
             UserAccountsDrawerHeader(
               currentAccountPicture: const CircleAvatar(
-                backgroundImage: AssetImage("assests/news.png"),),
+                backgroundImage: AssetImage("assests/news.png"),
+              ),
               accountName: Text(name ?? "null"),
               accountEmail: const Text("newsapp.org.com"),
               decoration: BoxDecoration(
@@ -63,15 +101,16 @@ class _SettingsState extends State<Settings> {
               icon: const Icon(Icons.person),
               value: name ?? "null",
               onTap: () {
+                newUser();
                 print("Name setting tapped!");
               },
             ),
             cust_settings(
               name: "Favorite",
               icon: const Icon(Icons.favorite),
-              value: favorite[1] ?? "null",
+              value: "${favorite[1]},${favorite[0]}",
               onTap: () {
-                print("Favorite setting tapped!");
+                Navigator.pushNamed(context, '/category');
               },
             ),
             cust_settings(
@@ -84,11 +123,13 @@ class _SettingsState extends State<Settings> {
             ),
             cust_settings(
               name: "Theme",
-              icon: theme?const Icon(Icons.sunny):const Icon(Icons.sunny_snowing),
-              value: theme?"light":"dark",
+              icon: theme
+                  ? const Icon(Icons.sunny)
+                  : const Icon(Icons.sunny_snowing),
+              value: theme ? "light" : "dark",
               onTap: () {
                 setState(() {
-                  theme=!theme;
+                  theme = !theme;
                   print(theme);
                 });
                 context.read<ThemeCubit>().changeTheme();
@@ -100,12 +141,18 @@ class _SettingsState extends State<Settings> {
               icon: const Icon(Icons.logout),
               value: "user",
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/onboarding');
+                Navigator.pushReplacementNamed(context, RouteName.onboardingscreen);
               },
             ),
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    usercontroller.clear();
+    super.dispose();
   }
 }

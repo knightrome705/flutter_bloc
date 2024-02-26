@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:untitled7/routes/name_routes.dart';
 import 'package:untitled7/utils/app_style.dart';
 import 'package:untitled7/utils/common_toat.dart';
 
@@ -138,7 +139,7 @@ class _CategoriesState extends State<Categories> {
                       if(items.length>2||items.length==2){
                         shared.setStringList("item", items);
                         commonToast("sucess");
-                        Navigator.pushReplacementNamed(context, '/location');
+                        Navigator.pushReplacementNamed(context,RouteName.location);
                       }else{
                       commonToast("minimum 2 required");
                       }

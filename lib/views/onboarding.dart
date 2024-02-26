@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:untitled7/pages/userlocarion.dart';
+import 'package:untitled7/views/userlocarion.dart';
 
 import 'category.dart';
 import 'login.dart';
@@ -14,7 +14,12 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
-  final controller = PageController();
+  late final controller;
+  @override
+  void initState() {
+    controller = PageController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,4 +52,5 @@ class _OnboardingState extends State<Onboarding> {
       ),
     );
   }
+
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:untitled7/routes/name_routes.dart';
 import 'package:untitled7/utils/app_colors.dart';
 import 'package:untitled7/utils/app_style.dart';
 
@@ -13,12 +14,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController name = TextEditingController();
+   late final TextEditingController namecontroller ;
   final _alphabetValidator = RegExp(r'^[a-zA-Z]+$');
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
+    namecontroller=TextEditingController();
     removeUser();
     super.initState();
   }
@@ -30,7 +32,7 @@ class _LoginState extends State<Login> {
 void getUser()async{
   SharedPreferences user =
       await SharedPreferences.getInstance();
-  user.setString("name", name.text);
+  user.setString("name", namecontroller.text);
 }
 
   @override
@@ -74,7 +76,7 @@ void getUser()async{
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
-                    controller: name,
+                    controller: namecontroller,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.person),
                       suffixIcon: const Icon(Icons.navigate_next),
@@ -107,7 +109,7 @@ void getUser()async{
 
                     if (_formKey.currentState!.validate()) {
                       getUser();
-                      Navigator.pushReplacementNamed(context, '/category');
+                      Navigator.pushReplacementNamed(context, RouteName.category);
                       return commonToast("sucess");
                     } else {
                       return commonToast("failed");
@@ -127,5 +129,11 @@ void getUser()async{
         ),
       ),
     );
+
+  }
+  @override
+  void dispose() {
+    namecontroller.dispose();
+    super.dispose();
   }
 }

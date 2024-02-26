@@ -2,9 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled7/utils/common_toat.dart';
+import '../../data/news_data/news_api_service.dart';
+import '../../models/news_model/newsapi.dart';
 
-import '../model/newsapi.dart';
-import '../news_data/news_api_service.dart';
+
 
 part 'news_state.dart';
 part 'news_cubit.freezed.dart';

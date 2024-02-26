@@ -119,7 +119,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? themeData = null,
   }) {
     return _then(_$InitialImpl(
-      themeData: null == themeData
+      null == themeData
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData,
@@ -130,7 +130,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required this.themeData});
+  const _$InitialImpl(this.themeData);
 
   @override
   final ThemeData themeData;
@@ -222,7 +222,7 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements ThemeState {
-  const factory _Initial({required final ThemeData themeData}) = _$InitialImpl;
+  const factory _Initial(final ThemeData themeData) = _$InitialImpl;
 
   @override
   ThemeData get themeData;
@@ -257,7 +257,7 @@ class __$$FinalThemeImplCopyWithImpl<$Res>
     Object? themeData = null,
   }) {
     return _then(_$FinalThemeImpl(
-      themeData: null == themeData
+      null == themeData
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData,
@@ -268,7 +268,7 @@ class __$$FinalThemeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FinalThemeImpl implements _FinalTheme {
-  const _$FinalThemeImpl({required this.themeData});
+  const _$FinalThemeImpl(this.themeData);
 
   @override
   final ThemeData themeData;
@@ -360,8 +360,7 @@ class _$FinalThemeImpl implements _FinalTheme {
 }
 
 abstract class _FinalTheme implements ThemeState {
-  const factory _FinalTheme({required final ThemeData themeData}) =
-      _$FinalThemeImpl;
+  const factory _FinalTheme(final ThemeData themeData) = _$FinalThemeImpl;
 
   @override
   ThemeData get themeData;

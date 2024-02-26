@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled7/pages/saved_news.dart';
+import 'package:untitled7/views/saved_news.dart';
 
 import 'favorite.dart';
 import 'homescreen.dart';
@@ -13,7 +13,7 @@ class Bottom_Nav extends StatefulWidget {
 
 class _Bottom_NavState extends State<Bottom_Nav> {
   int index=0;
-  List pages=[const Home(),const Favorite(),const Saved()];
+  List pages=[const Home(),const Favorites(),const Saved()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

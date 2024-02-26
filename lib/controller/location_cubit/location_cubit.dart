@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:untitled7/location_data/location_api_service.dart';
 import 'package:untitled7/utils/common_toat.dart';
-
-import '../location_model/locationapi.dart';
-
+import '../../data/location_data/location_api_service.dart';
+import '../../models/location_model/locationapi.dart';
 part 'location_state.dart';
 part 'location_cubit.freezed.dart';
 

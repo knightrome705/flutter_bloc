@@ -9,4 +9,6 @@ static TextStyle subtitle2=const TextStyle(fontStyle: FontStyle.italic);
 static TextStyle newsheading=const TextStyle(fontSize: 20,fontWeight: FontWeight.bold);
 static TextStyle settings=const TextStyle(fontSize: 15);
 static TextStyle description=const TextStyle(fontSize: 15,fontStyle: FontStyle.italic);
+static TextStyle temp=const TextStyle(fontSize: 20,color: Colors.red,fontStyle: FontStyle.italic);
+static TextStyle link= const TextStyle(color: Colors.blue,fontSize: 15);
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:untitled7/isar/news.dart';
+
+import 'news.dart';
 
 class NewsDatabase extends ChangeNotifier{
   static late Isar isar;
@@ -13,8 +14,8 @@ class NewsDatabase extends ChangeNotifier{
 
   final List<News> currentNews = [];
 
-  Future<void> addNews(String textFromUser) async {
-    final newNews = News()..title = textFromUser;
+  Future<void> addNews(String title) async {
+    final newNews = News()..title = title;
     await isar.writeTxn(() => isar.news.put(newNews));
     fetchNews();
   }
